@@ -2,103 +2,137 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpPower;
+    [SerializeField] private float speed = 8f;
+    [SerializeField] private float jumpingPower = 14f;
+    [SerializeField] private float wallSlidingSpeed = 2f;
+    [SerializeField] private float wallJumpingTime = 0.2f;
+    [SerializeField] private float wallJumpingDuration = 0.4f;
+    [SerializeField] private Vector2 wallJumpingPower = new Vector2(6f, 14f);
+    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-    private Rigidbody2D body;
-    private Animator anim;
-    private BoxCollider2D boxCollider;
-    private float wallJumpCooldown;
-    private float horizontalInput;
+    [SerializeField] private Animator anim;
+
+    private float horizontal;
+    private bool isFacingRight = true;
+    private bool isWallSliding;
+    private bool isWallJumping;
+    private float wallJumpingDirection;
+    private float wallJumpingCounter;
 
     private void Awake()
     {
-        // Grab references for rigidbody and animator from game object
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Flip player when moving left and right
-        if (horizontalInput > 0.01f)
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            transform.localScale = new Vector3(5, 5, 5);
-        }
-        else if (horizontalInput < -0.01f)
-        {
-            transform.localScale = new Vector3(-5, 5, 5);
+            body.linearVelocity = new Vector2(body.linearVelocity.x, jumpingPower);
+            anim.SetTrigger("jump");
         }
 
-        // Set animation parameters
-        anim.SetBool("run", horizontalInput != 0);
-        anim.SetBool("grounded", isGrounded());
-
-        // Wall jump logic
-        if (wallJumpCooldown > 0.2f)
+        if (Input.GetButtonUp("Jump") && body.linearVelocity.y > 0f)
         {
-            body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
+            body.linearVelocity = new Vector2(body.linearVelocity.x, body.linearVelocity.y * 0.5f);
+        }
 
-            if (onWall() && !isGrounded())
-            {
-                body.gravityScale = 0;
-                body.linearVelocity = Vector2.zero;
-            }
-            else
-            {
-                body.gravityScale = 7;
-            }
+        WallSlide();
+        WallJump();
 
-            if (Input.GetKey(KeyCode.Space))
-            {
-                Jump();
-            }
+        if (!isWallJumping)
+        {
+            Flip();
+        }
+
+        // Update animation parameters
+        anim.SetBool("run", horizontal != 0);
+        anim.SetBool("grounded", IsGrounded());
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isWallJumping)
+        {
+            body.linearVelocity = new Vector2(horizontal * speed, body.linearVelocity.y);
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private bool IsWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+    }
+
+    private void WallSlide()
+    {
+        if (IsWalled() && !IsGrounded() && horizontal != 0f)
+        {
+            isWallSliding = true;
+            body.linearVelocity = new Vector2(body.linearVelocity.x, Mathf.Clamp(body.linearVelocity.y, -wallSlidingSpeed, float.MaxValue));
         }
         else
         {
-            wallJumpCooldown += Time.deltaTime;
+            isWallSliding = false;
         }
     }
 
-    private void Jump()
+    private void WallJump()
     {
-        if (isGrounded())
+        if (isWallSliding)
         {
-            body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
-            anim.SetTrigger("jump");
+            isWallJumping = false;
+            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingCounter = wallJumpingTime;
+
+            CancelInvoke(nameof(StopWallJumping));
         }
-        else if(onWall() && !isGrounded())
+        else
         {
-            if (horizontalInput == 0)
+            wallJumpingCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        {
+            isWallJumping = true;
+            body.linearVelocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            wallJumpingCounter = 0f;
+
+            if (transform.localScale.x != wallJumpingDirection)
             {
-                body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
             }
-            else
-            {
-                body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-            }
-            wallJumpCooldown = 0;
+
+            Invoke(nameof(StopWallJumping), wallJumpingDuration);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void StopWallJumping()
     {
+        isWallJumping = false;
     }
 
-    private bool isGrounded()
+    private void Flip()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        return raycastHit.collider != null;
-    }
-
-    private bool onWall()
-    {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-        return raycastHit.collider != null;
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
     }
 }
