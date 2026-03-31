@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallJumpingTime = 0.2f;
     [SerializeField] private float wallJumpingDuration = 0.4f;
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(5f, 11f);
+    [SerializeField] private float wallJumpCooldownDuration = 0.3f;
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isWallJumping;
     private float wallJumpingDirection;
     private float wallJumpingCounter;
+    private float wallJumpCooldown;
 
     private void Awake()
     {
@@ -89,22 +91,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump()
     {
-        if (isWallSliding)
+        if (wallJumpCooldown > 0)
         {
-            isWallJumping = false;
+            wallJumpCooldown -= Time.deltaTime;
+        }
+
+        if (isWallSliding && !isWallJumping)
+        {
             wallJumpingDirection = -transform.localScale.x;
             wallJumpingCounter = wallJumpingTime;
 
             CancelInvoke(nameof(StopWallJumping));
         }
-        else
+        else if (!isWallSliding)
         {
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f && wallJumpCooldown <= 0)
         {
             isWallJumping = true;
+            wallJumpCooldown = wallJumpCooldownDuration;  // Prevent immediate re-jump
             body.linearVelocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
 
