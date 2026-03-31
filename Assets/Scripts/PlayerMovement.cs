@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallSlidingSpeed = 2f;
     [SerializeField] private float wallJumpingTime = 0.2f;
     [SerializeField] private float wallJumpingDuration = 0.4f;
-    [SerializeField] private Vector2 wallJumpingPower = new Vector2(6f, 14f);
+    [SerializeField] private Vector2 wallJumpingPower = new Vector2(5f, 11f);
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Update animation parameters
-        anim.SetBool("run", horizontal != 0);
+        anim.SetBool("run", horizontal != 0 && !isWallSliding);
         anim.SetBool("grounded", IsGrounded());
     }
 
