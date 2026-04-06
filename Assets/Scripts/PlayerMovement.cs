@@ -142,4 +142,9 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+    public bool canAttack()
+    {
+        return horizontal == 0 && IsGrounded() && !IsWalled();
+    }
 }
