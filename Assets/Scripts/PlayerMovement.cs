@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,6 +21,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight = true;
     private bool isWallSliding;
     private bool isWallJumping;
+
+    // Dashing variables
+    private bool canDash = true;
+    private bool isDashing;
+    [SerializeField] private float dashingPower = 5f;
+    [SerializeField] private float dashingTime = 0.2f;
+    [SerializeField] private float dashingCooldown = 1f;
+    [SerializeField] private TrailRenderer trail;
+
     private float wallJumpingDirection;
     private float wallJumpingCounter;
     private float wallJumpCooldown;
@@ -32,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -48,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
         WallSlide();
         WallJump();
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
         if (!isWallJumping)
         {
             Flip();
@@ -60,6 +80,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         if (!isWallJumping)
         {
             body.linearVelocity = new Vector2(horizontal * speed, body.linearVelocity.y);
@@ -146,5 +171,21 @@ public class PlayerMovement : MonoBehaviour
     public bool canAttack()
     {
         return horizontal == 0 && IsGrounded() && !IsWalled();
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = body.gravityScale;
+        body.gravityScale = 0f;
+        body.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        trail.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        trail.emitting = false;
+        body.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
