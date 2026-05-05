@@ -1,31 +1,37 @@
 fileFormatVersion: 2
-guid: b6fc7faeeab75f94b914e16fced6bcf9
+guid: 6a0dcb785b4a7e7438cd5bafffd9c3aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7780190520650127750
-    second: Mossy - TileSet_0
+      213: -8227546954408941770
+    second: HealthBar_0
   - first:
-      213: 1036836331014718058
-    second: Mossy - TileSet_1
+      213: -3178617384780871938
+    second: HealthBar_1
   - first:
-      213: -8013599348960855253
-    second: Mossy - TileSet_2
+      213: 5032351099696674128
+    second: HealthBar_2
   - first:
-      213: -5249700988863797070
-    second: Mossy - TileSet_3
+      213: 5856585005746452560
+    second: HealthBar_3
   - first:
-      213: 7789460486736427789
-    second: Mossy - TileSet_4
+      213: -6503669339106013020
+    second: HealthBar_4
   - first:
-      213: -2891453398403303555
-    second: Mossy - TileSet_5
+      213: -7959300830350487195
+    second: HealthBar_5
   - first:
-      213: -418929144885664223
-    second: Mossy - TileSet_6
+      213: 4778905902034280743
+    second: HealthBar_6
   - first:
-      213: -4372659424568917565
-    second: Mossy - TileSet_7
+      213: -5794802862350705069
+    second: HealthBar_7
+  - first:
+      213: 742694783190739037
+    second: HealthBar_8
+  - first:
+      213: -8435055190330730327
+    second: HealthBar_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +73,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,177 +140,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mossy - TileSet_0
+      name: HealthBar_0
       rect:
         serializedVersion: 2
-        x: 201
-        y: 2290
-        width: 1146
-        height: 1266
+        x: 4
+        y: 10
+        width: 114
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 2, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 689563cae0ac8fb60800000000000000
-      internalID: 7780190520650127750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mossy - TileSet_1
-      rect:
-        serializedVersion: 2
-        x: 1566
-        y: 2375
-        width: 453
-        height: 979
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a620a505625936e00800000000000000
-      internalID: 1036836331014718058
+      spriteID: 637ab99e2a1e1dd80800000000000000
+      internalID: -8227546954408941770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - TileSet_2
+      name: HealthBar_1
       rect:
         serializedVersion: 2
-        x: 2046
-        y: 1535
-        width: 1538
-        height: 2049
+        x: 126
+        y: 10
+        width: 115
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2bf2e899d9f9c090800000000000000
-      internalID: -8013599348960855253
+      spriteID: ef6414f545843e3d0800000000000000
+      internalID: -3178617384780871938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - TileSet_3
+      name: HealthBar_2
       rect:
         serializedVersion: 2
-        x: 427
-        y: 1563
-        width: 666
-        height: 476
+        x: 249
+        y: 10
+        width: 114
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b8a1c5c3c05527b0800000000000000
-      internalID: -5249700988863797070
+      spriteID: 0557772a9a086d540800000000000000
+      internalID: 5032351099696674128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - TileSet_4
+      name: HealthBar_3
       rect:
         serializedVersion: 2
-        x: 1546
-        y: 1757
-        width: 499
-        height: 260
+        x: 371
+        y: 10
+        width: 115
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0bbdd7da09b91c60800000000000000
-      internalID: 7789460486736427789
+      spriteID: 05875608805c64150800000000000000
+      internalID: 5856585005746452560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - TileSet_5
+      name: HealthBar_4
       rect:
         serializedVersion: 2
-        x: 1701
-        y: 2006
-        width: 11
-        height: 12
+        x: 494
+        y: 10
+        width: 114
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d773397247e7fd7d0800000000000000
-      internalID: -2891453398403303555
+      spriteID: 4a09cf9a1335eb5a0800000000000000
+      internalID: -6503669339106013020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - TileSet_6
+      name: HealthBar_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2049
-        height: 1537
+        x: 616
+        y: 10
+        width: 115
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 126280d892aaf2af0800000000000000
-      internalID: -418929144885664223
+      spriteID: 561dc72a012ea8190800000000000000
+      internalID: -7959300830350487195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - TileSet_7
+      name: HealthBar_6
       rect:
         serializedVersion: 2
-        x: 2333
-        y: 814
-        width: 435
-        height: 445
+        x: 739
+        y: 10
+        width: 114
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c14ec2bb613153c0800000000000000
-      internalID: -4372659424568917565
+      spriteID: 72165c12995125240800000000000000
+      internalID: 4778905902034280743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar_7
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 10
+        width: 115
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e5b26bf79b49fa0800000000000000
+      internalID: -5794802862350705069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar_8
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 10
+        width: 114
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58ae9868f49e4a00800000000000000
+      internalID: 742694783190739037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar_9
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 10
+        width: 115
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a89587cef9a0fa80800000000000000
+      internalID: -8435055190330730327
       vertices: []
       indices: 
       edges: []
@@ -313,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0233cfb66b9a64c40a6092d8d6b0d0a4
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +373,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mossy - TileSet_0: 7780190520650127750
-      Mossy - TileSet_1: 1036836331014718058
-      Mossy - TileSet_2: -8013599348960855253
-      Mossy - TileSet_3: -5249700988863797070
-      Mossy - TileSet_4: 7789460486736427789
-      Mossy - TileSet_5: -2891453398403303555
-      Mossy - TileSet_6: -418929144885664223
-      Mossy - TileSet_7: -4372659424568917565
+      HealthBar_0: -8227546954408941770
+      HealthBar_1: -3178617384780871938
+      HealthBar_2: 5032351099696674128
+      HealthBar_3: 5856585005746452560
+      HealthBar_4: -6503669339106013020
+      HealthBar_5: -7959300830350487195
+      HealthBar_6: 4778905902034280743
+      HealthBar_7: -5794802862350705069
+      HealthBar_8: 742694783190739037
+      HealthBar_9: -8435055190330730327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
