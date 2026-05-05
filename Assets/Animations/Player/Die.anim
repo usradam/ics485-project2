@@ -25,14 +25,16 @@ AnimationClip:
     - time: 0.083333336
       value: {fileID: 21300000, guid: 526a6505e4af4924b979ca0c062c5f26, type: 3}
     - time: 0.16666667
-      value: {fileID: 3951137172773550367, guid: b4e27511fa1354145afe0f139291052f, type: 3}
+      value: {fileID: -8080127670913687739, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - time: 0.25
-      value: {fileID: -5336003544746883709, guid: b4e27511fa1354145afe0f139291052f, type: 3}
+      value: {fileID: 3951137172773550367, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - time: 0.33333334
-      value: {fileID: -7863088608301141616, guid: b4e27511fa1354145afe0f139291052f, type: 3}
+      value: {fileID: -5336003544746883709, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - time: 0.41666666
-      value: {fileID: 5692422484244395196, guid: b4e27511fa1354145afe0f139291052f, type: 3}
+      value: {fileID: -7863088608301141616, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - time: 0.5
+      value: {fileID: 5692422484244395196, guid: b4e27511fa1354145afe0f139291052f, type: 3}
+    - time: 0.5833333
       value: {fileID: -1305424711956970472, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     attribute: m_Sprite
     path: 
@@ -58,6 +60,7 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 72f1a1a49efc4b947b8291e222552807, type: 3}
     - {fileID: 21300000, guid: 526a6505e4af4924b979ca0c062c5f26, type: 3}
+    - {fileID: -8080127670913687739, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - {fileID: 3951137172773550367, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - {fileID: -5336003544746883709, guid: b4e27511fa1354145afe0f139291052f, type: 3}
     - {fileID: -7863088608301141616, guid: b4e27511fa1354145afe0f139291052f, type: 3}
@@ -68,7 +71,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.59999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
