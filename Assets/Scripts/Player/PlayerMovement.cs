@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingCounter;
     private float wallJumpCooldown;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip dashSound;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -53,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             body.linearVelocity = new Vector2(body.linearVelocity.x, jumpingPower);
             anim.SetTrigger("jump");
+            SoundManager.instance.PlaySound(jumpSound);
         }
 
         if (Input.GetButtonUp("Jump") && body.linearVelocity.y > 0f)
@@ -65,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
+            SoundManager.instance.PlaySound(dashSound);
             StartCoroutine(Dash());
         }
 

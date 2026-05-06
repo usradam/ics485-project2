@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthCollectible
   healthValue: 1
+  collectSound: {fileID: 8300000, guid: bf796864666df514b9cbcb0f59834b1c, type: 3}

@@ -247,6 +247,8 @@ MonoBehaviour:
   components:
   - {fileID: 7468472083420750805}
   - {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 5c562c829125cb64eb7b1adedc248755, type: 3}
+  hurtSound: {fileID: 8300000, guid: 519a7d1a100ce6245b646b72fe309a4d, type: 3}
 --- !u!114 &7468472083420750805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  fireballSound: {fileID: 8300000, guid: 8b0cd1780ec51c54496ae0993de630db, type: 3}
 --- !u!114 &961418548129202181
 MonoBehaviour:
   m_ObjectHideFlags: 0

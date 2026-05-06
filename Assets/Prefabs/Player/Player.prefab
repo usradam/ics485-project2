@@ -207,6 +207,8 @@ MonoBehaviour:
   dashingTime: 0.2
   dashingCooldown: 0.8
   trail: {fileID: 4091988340108667115}
+  jumpSound: {fileID: 8300000, guid: 3e3d0500653c4a049bd5627598fe5750, type: 3}
+  dashSound: {fileID: 8300000, guid: 3e3d0500653c4a049bd5627598fe5750, type: 3}
 --- !u!95 &7394966534548327816
 Animator:
   serializedVersion: 7
@@ -254,6 +256,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: 0dbe91efb8ee94e6695ef0f552d202ce, type: 3}
 --- !u!96 &4091988340108667115
 TrailRenderer:
   serializedVersion: 4
@@ -391,6 +394,8 @@ MonoBehaviour:
   components:
   - {fileID: 2028615565628254100}
   - {fileID: 3685288274907854549}
+  deathSound: {fileID: 8300000, guid: 5c562c829125cb64eb7b1adedc248755, type: 3}
+  hurtSound: {fileID: 8300000, guid: 519a7d1a100ce6245b646b72fe309a4d, type: 3}
 --- !u!1 &5267604831279871281
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class Rockhead : EnemyDamage
     private float checkTimer;
     private bool attacking;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip impactSound;
+
     private void OnEnable()
     {
         Stop();
@@ -61,6 +64,7 @@ public class Rockhead : EnemyDamage
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        SoundManager.instance.PlaySound(impactSound);
         base.OnTriggerEnter2D(collision);
         Stop(); //Stop Rockhead once he hits something
     }
