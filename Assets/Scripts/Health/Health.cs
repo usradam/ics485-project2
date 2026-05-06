@@ -14,6 +14,10 @@ public class Health : MonoBehaviour
     [SerializeField] private int numberOfFlashes;
     private SpriteRenderer spriteRend;
 
+    [Header("Components")]
+    [SerializeField] private Behaviour[] components;
+    private bool invulnerable;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -22,6 +26,7 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float _damage)
     {
+        if (invulnerable) return;
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
         if (currentHealth > 0)
@@ -35,21 +40,10 @@ public class Health : MonoBehaviour
             {
                 anim.SetTrigger("die");
 
-                // Player
-                if (GetComponent<PlayerMovement>() != null)
+                // Deactivate all attached component classes
+                foreach (Behaviour component in components)
                 {
-                    GetComponent<PlayerMovement>().enabled = false;
-                }
-
-                // Enemy
-                if (GetComponentInParent<EnemyPatrol>() != null)
-                {
-                    GetComponentInParent<EnemyPatrol>().enabled = false;
-                }
-
-                if (GetComponent<MeleeEnemy>() != null)
-                {
-                    GetComponent<MeleeEnemy>().enabled = false;
+                    component.enabled = false;
                 }
 
                 dead = true;
@@ -62,6 +56,7 @@ public class Health : MonoBehaviour
     }
     private IEnumerator Invunerability()
     {
+        invulnerable = true;
         Physics2D.IgnoreLayerCollision(10, 11, true);
         for (int i = 0; i < numberOfFlashes; i++)
         {
@@ -71,5 +66,11 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
         Physics2D.IgnoreLayerCollision(10, 11, false);
+        invulnerable = false;
+    }
+
+    private void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }

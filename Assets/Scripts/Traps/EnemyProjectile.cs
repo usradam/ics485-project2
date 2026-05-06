@@ -36,6 +36,12 @@ public class EnemyProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Don't treat portal collisions as hits - let the bullet pass through portals
+        if (collision.TryGetComponent<Portal>(out Portal portal))
+        {
+            return;
+        }
+
         hit = true;
         base.OnTriggerEnter2D(collision); //Execute logic from parent script first
         coll.enabled = false;
