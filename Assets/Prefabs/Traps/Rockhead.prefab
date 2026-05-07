@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Rockhead
   damage: 1
   speed: 1
-  range: 16
+  range: 8
   checkDelay: 1
   playerLayer:
     serializedVersion: 2
