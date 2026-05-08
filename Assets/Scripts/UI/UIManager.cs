@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private AudioClip gameOverSound;
 
+    [Header("Win")]
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private AudioClip winSound;
+
     [Header("Pause")]
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private AudioSource backgroundMusic;
@@ -14,6 +18,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         gameOverScreen.SetActive(false);
+        winScreen.SetActive(false);
         pauseScreen.SetActive(false);
     }
     private void Update()
@@ -34,6 +39,16 @@ public class UIManager : MonoBehaviour
         if (backgroundMusic != null)
             backgroundMusic.Stop();
         SoundManager.instance.PlaySound(gameOverSound);
+    }
+
+    //Activate win screen
+    public void Win()
+    {
+        Time.timeScale = 0f;
+        winScreen.SetActive(true);
+        if (backgroundMusic != null)
+            backgroundMusic.Stop();
+        SoundManager.instance.PlaySound(winSound);
     }
 
     //Restart level
