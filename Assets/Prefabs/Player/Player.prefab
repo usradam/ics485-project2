@@ -188,11 +188,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 8
-  jumpingPower: 10
+  jumpingPower: 9
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingDuration: 0.3
-  wallJumpingPower: {x: 3, y: 9.5}
+  wallJumpingPower: {x: 3, y: 9}
   wallJumpCooldownDuration: 0.3
   body: {fileID: 7999011947434992629}
   groundCheck: {fileID: 8096913996779634583}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa33163ffb6a5ef4baa556d32cd1c31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackCooldown: 0.78
+  attackCooldown: 0.7
   bulletPoint: {fileID: 832010000485084878}
   bullets:
   - {fileID: 0}
@@ -390,8 +390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   startingHealth: 3
-  iFramesDuration: 1
-  numberOfFlashes: 3
+  iFramesDuration: 0.5
+  numberOfFlashes: 2
   components:
   - {fileID: 2028615565628254100}
   - {fileID: 3685288274907854549}
